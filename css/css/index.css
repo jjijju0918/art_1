@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("//fonts.googleapis.com/earlyaccess/nanummyeongjo.css");
 @font-face {
   font-family: "NotoSansKR";
   font-weight: 100;
@@ -52,6 +53,7 @@
 
 body {
   -ms-overflow-style: none;
+  font-family: "NotoSansKR", sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -103,7 +105,7 @@ body {
   z-index: 2;
   opacity: 0; /* 처음에는 안 보이게 */
   transform: translateY(-100%); /* 위위에 배치 */
-  animation: slideDown 1.2s forwards 1.2s;
+  animation: slideDown 1s forwards 1s;
 }
 .section:nth-child(2) {
   width: 100%;
@@ -111,7 +113,7 @@ body {
   padding-top: 2rem;
 }
 .section:nth-child(2) .outline {
-  font-family: "NotoSansKR", sans-serif;
+  opacity: 0;
 }
 .section:nth-child(2) .outline h2 {
   font-size: 32px;
@@ -159,7 +161,46 @@ body {
   margin-top: 90px;
 }
 .section:nth-child(3) {
-  background-color: #ffff99;
+  display: flex;
+  align-items: center;
+}
+.section:nth-child(3) .philosophy {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: left;
+  font-family: "nanummyeongjo", sans-serif;
+  gap: 20px;
+}
+.section:nth-child(3) .philosophy .img_box img {
+  max-width: 550px;
+  width: 50vw;
+}
+.section:nth-child(3) .philosophy .img_box p {
+  font-size: 28px;
+  margin-top: 25px;
+}
+.section:nth-child(3) .philosophy .divider {
+  width: 2px; /* 선 두께 */
+  height: 268.5px; /* 선 높이 */
+  background-color: #D2D0D0; /* 선 색상 */
+  margin: 0 20px; /* 이미지와 텍스트 사이의 여백 */
+}
+.section:nth-child(3) .philosophy .text h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+.section:nth-child(3) .philosophy .text p {
+  max-width: 810px;
+  margin-top: 40px;
+  font-family: "NotoSansKR", sans-serif;
+  font-size: 1.2vw;
+  font-weight: 400;
+  color: #575757;
+  line-height: 47px;
+}
+.section:nth-child(3) .philosophy .text span {
+  font-weight: 700;
 }
 .section:nth-child(4) {
   background-color: #ccff99;
