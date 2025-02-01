@@ -1,4 +1,4 @@
-
+@import "./fonts";
 * {
     transition-duration: 0.8s;
     padding: 0;
@@ -13,7 +13,8 @@ body {
     display: none;
 }
 // 공통
-.widrh {
+.width {
+    width: 92% !important;
     max-width: 1600px;
     margin: 0 auto;
 }
@@ -26,10 +27,121 @@ body {
     font-size: 32px;
     text-align: center;
     overflow: hidden;
-    &:nth-child(1) { background-color: #ff9999; } // 빨간 계열
-    &:nth-child(2) { background-color: #ffcc99; } // 주황 계열
+
+    &:nth-child(1) { 
+        .maintext-box{
+            height: 100%; 
+            display: flex; 
+            align-items:baseline; 
+            justify-content: flex-end;
+            padding-top: 4rem;
+            opacity: 0;
+            img{
+                width: 100%; 
+                max-width: 800px;
+            }
+        }
+        .slide {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 3s ease-in-out, transform 3s ease-in-out;
+            &:nth-child(1) {
+                background-image: url('/image/slide1.png'); /* 첫 번째 이미지 */
+                z-index: 1;
+            }
+            &:nth-child(2) {
+                background-image: url('/image/slide2.png'); /* 첫 번째 이미지 */
+                z-index: 2;
+                opacity: 0; /* 처음에는 안 보이게 */
+                transform: translateY(-100%); /* 위위에 배치 */
+                animation: slideDown 1.2s forwards 1.2s;
+            }
+        }
+          
+    } 
+    &:nth-child(2) {
+        width: 100%;
+        background: url('/image/2_slide1.png')0 center / cover no-repeat; /* 첫 번째 이미지 */
+        padding-top: 2rem;
+        .outline {
+            font-family: "NotoSansKR", sans-serif;
+            h2 {
+                font-size: 32px;
+                font-weight: 200;
+                color: #2A3D57;
+            }
+            p {
+                font-size: 22px;
+                margin-top: 43px;
+                color: #333333;
+                line-height: 44px;
+                letter-spacing: 0.2em;
+                font-weight: 100;
+            }
+           &-text {
+            text-align: left;
+            margin-top: 2em;
+            h3 {
+                font-size: 21px;
+                font-weight: 500;
+                color: #666666; 
+                line-height: 48px;
+            }
+            p {
+                font-size: 18px;
+                margin-top: 0;
+                color: #666666;
+                line-height: 38px;
+                letter-spacing: 0;
+                font-weight: 200;
+            }
+            &:nth-last-child(1) {
+                margin-top: 37px;
+            }
+            span {
+                color: #5487C1;
+                font-weight: 300;
+            }
+           }
+           &-lasttext {
+            color: #5487C1;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 63px;
+            margin-top: 90px;
+           }
+        }
+    } 
     &:nth-child(3) { background-color: #ffff99; } // 노랑 계열
     &:nth-child(4) { background-color: #ccff99; } // 연두 계열
     &:nth-child(5) { background-color: #99ccff; } // 파랑 계열
     &:nth-child(6) { background-color: #cc99ff; } // 보라 계열
+}
+
+/* 두 번째 이미지가 슬라이드처럼 서서히 이동하며 덮어씀 */
+@keyframes slideDown  {
+    0% { opacity: 0; transform: translateY(-100%); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+
+@media all and (max-width: 1024px) {
+    .section:nth-child(1) .maintext-box{
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media all and (max-width: 850px) {
+  .slide:nth-child(1){
+        background-image: url('/image/mob_bg.png');
+    }
+    .section:nth-child(1) .maintext-box{
+        padding-top: 0;
+    }
 }

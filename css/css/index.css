@@ -1,3 +1,49 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "NotoSansKR";
+  font-weight: 100;
+  src: url(/font/noto/NotoSansKR-Thin.woff) format(woff);
+}
+@font-face {
+  font-family: "NotoSansKR";
+  font-weight: 200;
+  src: url(/font/noto/NotoSansKR-ExtraLight.woff) format(woff);
+}
+@font-face {
+  font-family: "NotoSansKR";
+  font-weight: 300;
+  src: url(/font/noto/NotoSansKR-Light.woff) format(woff);
+}
+@font-face {
+  font-family: "NotoSansKR";
+  font-weight: 400;
+  src: url(/font/noto/NotoSansKR-Regular.woff) format(woff);
+}
+@font-face {
+  font-family: "NotoSansKR";
+  font-weight: 500;
+  src: url(/font/noto/NotoSansKR-Medium.woff) format(woff);
+}
+@font-face {
+  font-family: "NotoSansKR";
+  font-weight: 600;
+  src: url(/font/noto/NotoSansKR-SemiBold.woff) format(woff);
+}
+@font-face {
+  font-family: "NotoSansKR";
+  font-weight: 700;
+  src: url(/font/noto/NotoSansKR-Bold.woff) format(woff);
+}
+@font-face {
+  font-family: "NotoSansKR";
+  font-weight: 800;
+  src: url(/font/noto/NotoSansKR-ExtraBold.woff) format(woff);
+}
+@font-face {
+  font-family: "NotoSansKR";
+  font-weight: 900;
+  src: url(/font/noto/NotoSansKR-Black.woff) format(woff);
+}
 * {
   transition-duration: 0.8s;
   padding: 0;
@@ -12,7 +58,8 @@ body {
   display: none;
 }
 
-.widrh {
+.width {
+  width: 92% !important;
   max-width: 1600px;
   margin: 0 auto;
 }
@@ -25,11 +72,91 @@ body {
   text-align: center;
   overflow: hidden;
 }
-.section:nth-child(1) {
-  background-color: #ff9999;
+.section:nth-child(1) .maintext-box {
+  height: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  padding-top: 4rem;
+  opacity: 0;
+}
+.section:nth-child(1) .maintext-box img {
+  width: 100%;
+  max-width: 800px;
+}
+.section:nth-child(1) .slide {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 3s ease-in-out, transform 3s ease-in-out;
+}
+.section:nth-child(1) .slide:nth-child(1) {
+  background-image: url("/image/slide1.png"); /* 첫 번째 이미지 */
+  z-index: 1;
+}
+.section:nth-child(1) .slide:nth-child(2) {
+  background-image: url("/image/slide2.png"); /* 첫 번째 이미지 */
+  z-index: 2;
+  opacity: 0; /* 처음에는 안 보이게 */
+  transform: translateY(-100%); /* 위위에 배치 */
+  animation: slideDown 1.2s forwards 1.2s;
 }
 .section:nth-child(2) {
-  background-color: #ffcc99;
+  width: 100%;
+  background: url("/image/2_slide1.png") 0 center/cover no-repeat; /* 첫 번째 이미지 */
+  padding-top: 2rem;
+}
+.section:nth-child(2) .outline {
+  font-family: "NotoSansKR", sans-serif;
+}
+.section:nth-child(2) .outline h2 {
+  font-size: 32px;
+  font-weight: 200;
+  color: #2A3D57;
+}
+.section:nth-child(2) .outline p {
+  font-size: 22px;
+  margin-top: 43px;
+  color: #333333;
+  line-height: 44px;
+  letter-spacing: 0.2em;
+  font-weight: 100;
+}
+.section:nth-child(2) .outline-text {
+  text-align: left;
+  margin-top: 2em;
+}
+.section:nth-child(2) .outline-text h3 {
+  font-size: 21px;
+  font-weight: 500;
+  color: #666666;
+  line-height: 48px;
+}
+.section:nth-child(2) .outline-text p {
+  font-size: 18px;
+  margin-top: 0;
+  color: #666666;
+  line-height: 38px;
+  letter-spacing: 0;
+  font-weight: 200;
+}
+.section:nth-child(2) .outline-text:nth-last-child(1) {
+  margin-top: 37px;
+}
+.section:nth-child(2) .outline-text span {
+  color: #5487C1;
+  font-weight: 300;
+}
+.section:nth-child(2) .outline-lasttext {
+  color: #5487C1;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 63px;
+  margin-top: 90px;
 }
 .section:nth-child(3) {
   background-color: #ffff99;
@@ -42,4 +169,30 @@ body {
 }
 .section:nth-child(6) {
   background-color: #cc99ff;
+}
+
+/* 두 번째 이미지가 슬라이드처럼 서서히 이동하며 덮어씀 */
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media all and (max-width: 1024px) {
+  .section:nth-child(1) .maintext-box {
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media all and (max-width: 850px) {
+  .slide:nth-child(1) {
+    background-image: url("/image/mob_bg.png");
+  }
+  .section:nth-child(1) .maintext-box {
+    padding-top: 0;
+  }
 }

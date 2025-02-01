@@ -7,7 +7,6 @@
  *
  * Copyright (c) 2019 Daniel Eden
  */
- 
 @-webkit-keyframes bounce {
   0%, 20%, 53%, 80%, to {
     -webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
@@ -1361,7 +1360,6 @@
   -webkit-animation-name: blink;
   animation-name: blink;
 }
-ddd
 
 @keyframes slideFlicker {
   0% {
