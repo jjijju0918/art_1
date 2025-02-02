@@ -249,17 +249,18 @@ body {
   font-size: 72px;
   line-height: 78px;
   text-align: center;
+  color: rgb(255, 255, 255);
 }
 .section:nth-child(4) .slider-container .slider .slide .text-content h3 {
   font-size: 36px;
   font-weight: 400;
-  color: #4A4A4A;
+  color: #b9b9b9;
   margin-top: 37px;
 }
 .section:nth-child(4) .slider-container .slider .slide .text-content p {
   font-size: 20px;
   line-height: 35px;
-  color: #333333;
+  color: #999999;
   font-weight: 300;
   margin-top: 85px;
 }

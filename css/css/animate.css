@@ -3316,6 +3316,17 @@
   animation-name: zoomOutUp
 }
 
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%); /* 왼쪽에서 슬라이드가 들어오기 전 위치 */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* 원래 위치로 돌아와 보이도록 */
+  }
+}
+
 @-webkit-keyframes slideInDown {
   0% {
     -webkit-transform: translate3d(0, -100%, 0);
