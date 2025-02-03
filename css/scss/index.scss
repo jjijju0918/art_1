@@ -190,6 +190,12 @@ body {
                 &:nth-child(3) {
                     background: url('/image/4_slide3.png') center / cover no-repeat;
                 }
+                &:nth-child(4) {
+                    background: url('/image/4_slide4.png') center / cover no-repeat;
+                }
+                &:nth-child(5) {
+                    background: url('/image/4_slide5.png') center / cover no-repeat;
+                }
                 .slide {
                     display: flex;
                     gap: 60px;
@@ -232,7 +238,7 @@ body {
             }
         }
         .arrow-prev, .arrow-next {
-            position: fixed;
+            position: absolute;
             top: 50%;
             transform: translateY(-50%);
             z-index: 2;
