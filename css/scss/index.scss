@@ -262,7 +262,66 @@ body {
             opacity: 0.8;
         }        
     } 
-    &:nth-child(5) { background-color: #99ccff; } // 파랑 계열
+    &:nth-child(5) {
+        display: flex;
+        // justify-content: space-between;
+        text-align: initial;
+        align-items: center;
+        .container {
+            border-bottom: 1px solid #969696;
+            padding-bottom: 10px;
+            h2 {
+                position: relative;
+                font-size: 21px;
+            }
+            h2::after{
+                position: absolute;
+                content: "";
+                display: block;
+                width: 35.5px; /* 밑줄 길이 */
+                border-top: 5px solid #6D5F31;
+                top: -50%;
+                // margin: -30px  0; /* 위쪽 여백 조정 */
+            }
+            .article-con {
+                position: relative;
+                max-width: 647.2px;
+                border-top: 1px solid #969696;
+                padding-top: 10px;
+                padding-bottom: 2rem;
+                margin-top: 10px;
+                // background-color: #2A3D57;
+               
+                h3{
+                    font-size: 24px;
+                    line-height: 40px;
+                    color: #333333;
+                    margin-bottom: 9px;
+                    font-weight: 700;
+                }
+                p{
+                    font-size: 16px;
+                    line-height: 27px;
+                    color: #666666;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: normal;
+                    text-align: left;
+                    word-wrap: break-word;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                }
+                span {
+                    position: absolute;
+                    right: 0;
+                    bottom: 0%;
+                    font-size: 16px;
+                    color: #666666;
+                }
+            }
+        }
+     } 
     &:nth-child(6) { background-color: #cc99ff; } // 보라 계열
 }
 
