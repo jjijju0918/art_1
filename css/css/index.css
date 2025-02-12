@@ -292,8 +292,14 @@ body {
 }
 .section:nth-child(5) {
   display: flex;
-  text-align: initial;
   align-items: center;
+  background: url("/image/ri_ba.jpg") center/cover no-repeat;
+}
+.section:nth-child(5) .ri_v {
+  display: flex;
+  text-align: initial;
+  gap: 20px;
+  justify-content: space-around;
 }
 .section:nth-child(5) .container {
   border-bottom: 1px solid #969696;
@@ -346,8 +352,23 @@ body {
   font-size: 16px;
   color: #666666;
 }
+.section:nth-child(5) .rivbox {
+  border-bottom: none;
+}
+.section:nth-child(5) .rivbox .riv {
+  margin-top: 37px;
+  width: 750px;
+}
+.section:nth-child(5) .rivbox .riv img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .section:nth-child(6) {
-  background-color: #cc99ff;
+  background: url("/image/interview.png") center/cover no-repeat;
+}
+.section:nth-child(7) {
+  background: url("/image/art_ba.jpg") center/cover no-repeat;
 }
 
 /* 두 번째 이미지가 슬라이드처럼 서서히 이동하며 덮어씀 */

@@ -264,9 +264,15 @@ body {
     } 
     &:nth-child(5) {
         display: flex;
-        // justify-content: space-between;
-        text-align: initial;
         align-items: center;
+        background: url('/image/ri_ba.jpg') center / cover no-repeat;
+        // background: radial-gradient(circle, rgba(236, 184, 207, 0.521) 0%, rgba(198, 223, 252, 0.377) 100%);
+        .ri_v {
+            display: flex;
+            text-align: initial;
+            gap: 20px;
+            justify-content: space-around;
+        }
         .container {
             border-bottom: 1px solid #969696;
             padding-bottom: 10px;
@@ -281,7 +287,6 @@ body {
                 width: 35.5px; /* 밑줄 길이 */
                 border-top: 5px solid #6D5F31;
                 top: -50%;
-                // margin: -30px  0; /* 위쪽 여백 조정 */
             }
             .article-con {
                 position: relative;
@@ -290,7 +295,6 @@ body {
                 padding-top: 10px;
                 padding-bottom: 2rem;
                 margin-top: 10px;
-                // background-color: #2A3D57;
                
                 h3{
                     font-size: 24px;
@@ -321,8 +325,25 @@ body {
                 }
             }
         }
+        .rivbox {
+            border-bottom: none;
+            .riv {
+                margin-top: 37px;
+                width: 750px;
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                }
+                
+            }
+        }
      } 
-    &:nth-child(6) { background-color: #cc99ff; } // 보라 계열
+    &:nth-child(6) { 
+        background: url('/image/interview.png') center / cover no-repeat;
+     } 
+     &:nth-child(7) { 
+        background: url('/image/art_ba.jpg') center / cover no-repeat;
+     } 
 }
 
 /* 두 번째 이미지가 슬라이드처럼 서서히 이동하며 덮어씀 */
