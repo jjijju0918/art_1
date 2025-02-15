@@ -1,42 +1,110 @@
 window.onload = function() {
+    const workBtnContainer = document.querySelector('.work__categories');
+    const projectContainer = document.querySelector('.work__projects');
+    const projects = document.querySelectorAll('.project');
+    const noProjectsMessage = document.createElement('div'); // 메시지 요소 생성
+    const sectionContainers = document.querySelectorAll('.section__container');
+
+    // '업로드 예정입니다' 메시지 스타일링
+    noProjectsMessage.classList.add('no-projects-message');
+    noProjectsMessage.textContent = "업로드 예정입니다";
+    noProjectsMessage.style.opacity = '0';
+    noProjectsMessage.style.transition = 'opacity 0.5s ease';
+    projectContainer.appendChild(noProjectsMessage);
+
+    const firstBtn = document.querySelector('.category__btn.selected');
+    if (!firstBtn) {
+        console.warn("선택된 category__btn이 없습니다.");
+        return;
+    }
+
+    const firstFilter = firstBtn.dataset.filter;
+
+    function filterProjects(filter) {
+        let hasVisibleProjects = false;
+
+        projects.forEach((project) => {
+            if (filter === '*' || filter === project.dataset.type) {
+                project.classList.remove('invisible');
+                setTimeout(() => project.style.opacity = '1', 10);
+                hasVisibleProjects = true;
+            } else {
+                project.style.opacity = '0';
+                setTimeout(() => project.classList.add('invisible'), 0);
+            }
+        });
+
+        setTimeout(() => {
+            noProjectsMessage.style.opacity = hasVisibleProjects ? '0' : '1';
+        }, 300);
+
+        sectionContainers.forEach(container => {
+            const span = container.querySelector('span');
+            if (span) {
+                span.style.opacity = hasVisibleProjects ? '1' : '0';
+                span.style.transition = 'opacity 0.3s ease';
+            }
+            const message = container.querySelector('.message');
+            if (message) {
+                message.style.opacity = hasVisibleProjects ? '1' : '0';
+                message.style.transition = 'opacity 0.3s ease';
+            }
+        });
+    }
+
+    filterProjects(firstFilter);
+
+    workBtnContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('category__btn')) {
+            const filter = e.target.dataset.filter;
+            if (filter == null) {
+                return;
+            }
+
+            const active = document.querySelector('.category__btn.selected');
+            if (active) active.classList.remove('selected');
+            e.target.classList.add('selected');
+
+            projectContainer.classList.add('anim-out');
+            setTimeout(() => {
+                filterProjects(filter);
+                projectContainer.classList.remove('anim-out');
+            }, 300);
+        }
+    });
+
     const elm = document.querySelectorAll('.section');
     const elmCount = elm.length;
-    let isScrolling = false; // 연속 스크롤 방지
+    let isScrolling = false;
 
     elm.forEach(function(item, index) {
         item.addEventListener('wheel', function(event) {
-            if (isScrolling) return; // 이미 스크롤 중이면 중복 실행 방지
+            if (isScrolling) return;
             isScrolling = true;
 
             event.preventDefault();
-            let delta = event.deltaY > 0 ? 1 : -1; // 양수: 아래로, 음수: 위로
+            let delta = event.deltaY > 0 ? 1 : -1;
 
             let moveTop = window.scrollY;
             let elmSelector = elm[index];
 
-            // wheel down : move to next section
             if (delta > 0) {
                 if (index < elmCount - 1) {
                     moveTop = elmSelector.nextElementSibling.offsetTop;
                 } else {
-                    // 마지막 섹션에서 푸터로 이동
                     const footer = document.querySelector('footer');
                     if (footer) moveTop = footer.offsetTop;
                 }
-            }
-            // wheel up : move to previous section
-            else {
+            } else {
                 if (index > 0) {
                     moveTop = elmSelector.previousElementSibling.offsetTop;
                 } else {
-                    // 첫 번째 섹션에서 최상단 고정
                     moveTop = 0;
                 }
             }
 
             smoothScroll(moveTop);
 
-            // 일정 시간 후 스크롤 가능하도록 설정
             setTimeout(() => {
                 isScrolling = false;
             }, 800);
@@ -46,7 +114,7 @@ window.onload = function() {
     function smoothScroll(target) {
         const start = window.scrollY;
         const distance = target - start;
-        const duration = 800; // 0.8초 동안 스크롤
+        const duration = 800;
         let startTime = null;
 
         function animation(currentTime) {
@@ -67,5 +135,20 @@ window.onload = function() {
         }
 
         requestAnimationFrame(animation);
+    }
+
+    const categoryButtons = document.querySelectorAll('.category__btn');
+    if (categoryButtons.length === 0) {
+        const spans = document.querySelectorAll('.section__container span');
+        spans.forEach(span => {
+            span.style.opacity = '0';
+            span.style.transition = 'opacity 0.2s ease';
+        });
+        const messages = document.querySelectorAll('.section__container .message');
+        messages.forEach(message => {
+            message.style.opacity = '0';
+            message.style.transition = 'opacity 0.2s ease';
+        });
+        noProjectsMessage.style.opacity = '0';
     }
 };

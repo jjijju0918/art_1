@@ -194,7 +194,7 @@ body {
   max-width: 810px;
   margin-top: 40px;
   font-family: "NotoSansKR", sans-serif;
-  font-size: 1.2vw;
+  font-size: 20px;
   font-weight: 300;
   color: #575757;
   line-height: 47px;
@@ -293,7 +293,7 @@ body {
 .section:nth-child(5) {
   display: flex;
   align-items: center;
-  background: url("/image/ri_ba.jpg") center/cover no-repeat;
+  background: url("/image/ri_ba.png") center/cover no-repeat;
 }
 .section:nth-child(5) .ri_v {
   display: flex;
@@ -367,8 +367,163 @@ body {
 .section:nth-child(6) {
   background: url("/image/interview.png") center/cover no-repeat;
 }
+.section:nth-child(6) .inter {
+  box-sizing: border-box;
+}
 .section:nth-child(7) {
+  position: relative;
   background: url("/image/art_ba.jpg") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.section:nth-child(7) .ba {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(4, 58, 2, 0.4235294118);
+}
+.section:nth-child(7) .work__categories {
+  position: relative;
+  margin: 40px;
+  z-index: 2; /* 버튼 영역이 항상 위에 있도록 설정 */
+}
+.section:nth-child(7) .work__categories .category__btn {
+  border-radius: 5px;
+  font-size: 24px;
+  padding: 12px 38px;
+  position: relative;
+  background-color: #B5C18E;
+  color: #fff;
+  border: none;
+}
+.section:nth-child(7) .work__categories .category__btn.selected,
+.section:nth-child(7) .work__categories .category__btn:hover {
+  background-color: #6B705C;
+  color: #fff;
+}
+.section:nth-child(7) .work__categories .category__btn.selected .category__count,
+.section:nth-child(7) .work__categories .category__btn:hover .category__count {
+  opacity: 1;
+  top: 0;
+}
+.section:nth-child(7) .work__categories .category__count {
+  background-color: #333333;
+  border-radius: 50%;
+  color: #fff;
+  width: 22px;
+  height: 20px;
+  display: inline-block;
+  position: absolute;
+  top: -25px;
+  right: 16px;
+  opacity: 0;
+  margin-top: 8px;
+  transition: all 300ms ease-in;
+}
+.section:nth-child(7) .section__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.section:nth-child(7) .section__container h1 {
+  font-size: 58px;
+  color: #2a3d2c;
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 78px;
+}
+.section:nth-child(7) .section__container span {
+  position: absolute;
+  font-size: 18px;
+  top: 180px;
+  left: 0;
+  color: #ffffff;
+  font-weight: 200;
+  letter-spacing: 3px;
+}
+.section:nth-child(7) .section__container .work__projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  opacity: 1;
+  transition: all 300ms ease-out;
+  gap: 20px;
+  height: auto; /* 높이를 자동으로 설정 */
+}
+.section:nth-child(7) .section__container .work__projects.anim-out {
+  opacity: 0;
+  transform: scale(0.96) translateY(40px);
+}
+.section:nth-child(7) .section__container .project {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(1, 530px); /* 기본 너비 530px */
+  grid-template-rows: 449px; /* 기본 높이 449px */
+  width: 100%;
+  height: 100%;
+  background-color: #fff; /* 비어있는 공간 배경 */
+}
+.section:nth-child(7) .section__container .project.invisible {
+  display: none;
+}
+.section:nth-child(7) .section__container .porject__img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.section:nth-child(7) .section__container .project__description {
+  position: absolute;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 300ms ease-in;
+}
+.section:nth-child(7) .section__container .project:hover .project__description {
+  opacity: 0.8;
+  transform: translateY(0px);
+}
+.section:nth-child(7) .section__container .project__description h3 {
+  color: #a3ddff;
+  font-size: 28px;
+}
+.section:nth-child(7) .section__container .project__description p {
+  font-size: 18px;
+}
+.section:nth-child(7) .section__container .project__description h3::after {
+  content: "";
+  display: block;
+  position: relative;
+  left: 50%;
+  width: 50px;
+  height: 2px;
+  transform: translateX(-50%);
+  margin-top: 8px;
+  background-color: var(--color-dark-white);
+}
+.section:nth-child(7) .section__container .no-projects-message {
+  position: absolute;
+  text-align: center;
+  font-size: 28px;
+  color: #8df800;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+.section:nth-child(7) .section__container .message {
+  font-size: 16px;
+  width: 100%;
+  text-align: right;
+  color: #e2e2e2;
+  margin-top: 38px;
 }
 
 /* 두 번째 이미지가 슬라이드처럼 서서히 이동하며 덮어씀 */
